@@ -4,16 +4,14 @@ import { mytheme } from "../Styles/Theme";
 
 interface divprops {
   primary: boolean;
-  size: string;
   theme: {
     [key: string]: any;
   };
 }
 
-const Button = styled.button`
-  width: ${(props: divprops) => props.size};
+const Container = styled.button`
+  width: 100%;
   height: 50px;
-  margin-bottom: 15px;
   border-radius: ${(props: mytheme) => props.theme.borderRadius};
   color: ${(props: divprops) => (props.primary ? "#ffffff" : "#5aa3ff")};
   transition: all 0.3s;
@@ -38,20 +36,8 @@ const Button = styled.button`
 interface ButtonProps {
   title: string;
   primary: boolean;
-  size: string;
 }
-const defaultProps: any = {
-  background: "#FFFFFF",
-  size: "350px"
-};
 
-export const MainButton = (props: ButtonProps) => {
-  const private_props: ButtonProps = { ...defaultProps, ...props };
-  return (
-    <Button primary={private_props.primary} size={private_props.size}>
-      {private_props.title}
-    </Button>
-  );
+export const Button = (props: ButtonProps) => {
+  return <Container primary={props.primary}>{props.title}</Container>;
 };
-
-MainButton.defaultProps = defaultProps;

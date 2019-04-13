@@ -6,6 +6,7 @@ export interface mytheme {
 
 export default {
   maxWidth: "935px",
+  authBox: "330px",
   borderRadius: "5px",
   blue: "#5aa3ff",
   lightBlue: "#daebff",

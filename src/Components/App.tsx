@@ -29,7 +29,7 @@ const App = () => {
         <GlobalStyle />
         <HashRouter>
           <>
-            <Router isLoggedIn={false} />
+            <Router isLoggedIn={isLoggedIn} />
           </>
         </HashRouter>
       </Wrapper>
