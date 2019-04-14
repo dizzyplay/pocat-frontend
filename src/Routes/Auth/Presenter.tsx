@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
+
 const Container = styled.div`
   text-align: center;
   width: 340px;
@@ -80,7 +81,15 @@ interface AuthType {
   [key: string]: any;
 }
 
-const Auth = ({ email, password, action, setAction, onSubmit }: AuthType) => (
+const Auth = ({
+  email,
+  secretKey,
+  setPassword,
+  password,
+  action,
+  setAction,
+  onSubmit
+}: AuthType) => (
   <Wrapper>
     {action === "login" && (
       <>
@@ -123,6 +132,36 @@ const Auth = ({ email, password, action, setAction, onSubmit }: AuthType) => (
           <Link onClick={() => setAction("login")}>
             <Button title={"로그인"} primary={false} />
           </Link>
+        </Form>
+      </>
+    )}
+    {action === "secret" && (
+      <>
+        <Form>
+          <form onSubmit={onSubmit}>
+            <Input
+              label={"이메일로 발송된 인증키를 입력해주세요"}
+              required={true}
+              {...secretKey}
+              type={"text"}
+            />
+            <Button title={"인증하기"} primary={true} />
+          </form>
+        </Form>
+      </>
+    )}
+    {action === "setPassword" && (
+      <>
+        <Form>
+          <form onSubmit={onSubmit}>
+            <Input
+              label={"사용하실 패스워드를 입력해주세요"}
+              required={true}
+              {...setPassword}
+              type={"password"}
+            />
+            <Button title={"비밀번호 설정"} primary={true} />
+          </form>
         </Form>
       </>
     )}

@@ -7,6 +7,8 @@ import Theme, { mytheme } from "../Styles/Theme";
 import { HashRouter } from "react-router-dom";
 import styled from "styled-components";
 import Router from "./Routes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Query = gql`
   {
@@ -32,6 +34,7 @@ const App = () => {
             <Router isLoggedIn={isLoggedIn} />
           </>
         </HashRouter>
+        <ToastContainer position={toast.POSITION.TOP_CENTER} />
       </Wrapper>
     </ThemeProvider>
   );
