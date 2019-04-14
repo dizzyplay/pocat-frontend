@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const Home = () => {
   const { data } = useQuery(GET_CURRENT_CAT);
   const onClick = async () => {
-    console.log(data);
+    console.log(data)
   };
   return (
     <Wrapper>

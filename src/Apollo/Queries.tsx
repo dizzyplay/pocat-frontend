@@ -8,6 +8,7 @@ export const SET_CURRENT_CAT = gql`
 
 export const GET_CURRENT_CAT = gql`
   {
-    getCurrentCat @client
+    current_cat_uuid @client
   }
+  
 `;

@@ -16,10 +16,9 @@ const MY_CAT_LIST = gql`
 export default () => {
   const { data } = useQuery(MY_CAT_LIST);
   const setCurrentCatMutation = useMutation(SET_CURRENT_CAT);
-  if (data.myCatList) {
-    console.log(data.myCatList[0].uuid);
+  const catList = data.myCatList;
+  if (catList) {
     (async () => {
-      console.log(data.myCatList[0].uuid);
       await setCurrentCatMutation({
         variables: { uuid: data.myCatList[0].uuid }
       });
