@@ -19,7 +19,6 @@ export default () => {
   if (data.myCatList) {
     console.log(data.myCatList[0].uuid);
     (async () => {
-      console.log("send data");
       console.log(data.myCatList[0].uuid);
       await setCurrentCatMutation({
         variables: { uuid: data.myCatList[0].uuid }
