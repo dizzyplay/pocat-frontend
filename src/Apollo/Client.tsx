@@ -1,7 +1,9 @@
-import ApolloClient from "apollo-boost";
+import ApolloClient, { gql } from "apollo-boost";
 import { defaults, resolvers } from "./LocalState";
+import { InMemoryCache } from "apollo-cache-inmemory";
 
 const client = new ApolloClient({
+  cache: new InMemoryCache(),
   uri: "http://10.0.1.10:3001",
   clientState: {
     defaults,

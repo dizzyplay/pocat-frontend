@@ -41,7 +41,6 @@ export default () => {
     if (action === "login") {
       try {
         const { data } = await userLoginMutation();
-        console.log(data.userLogin.token);
         await localLoginMutation({
           variables: { token: data.userLogin.token }
         });
