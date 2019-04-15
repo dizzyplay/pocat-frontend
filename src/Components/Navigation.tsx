@@ -36,7 +36,7 @@ const HeaderColumn = styled.div`
   border: 1px solid;
 `;
 
-const CatProfile = styled.div`
+const CatListContainer = styled.div`
   width: 157px;
   border: 1px solid;
   text-align: center;
@@ -49,9 +49,9 @@ export default () => {
         <MenuIcon color={"#5aa3ff"} />
       </HeaderColumn>
       <Logo>POCAT</Logo>
-      <CatProfile>
+      <CatListContainer>
         <CatList />
-      </CatProfile>
+      </CatListContainer>
     </Container>
   );
 };

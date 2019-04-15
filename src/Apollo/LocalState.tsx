@@ -1,5 +1,5 @@
 import { Resolvers } from "apollo-client/core/types";
-import {gql} from "apollo-boost";
+import { gql } from "apollo-boost";
 
 interface defaultTypes {
   isLoggedIn: boolean;
@@ -26,10 +26,10 @@ export const resolvers: Resolvers = {
     userLogout: (_, __, { cache }) => {
       localStorage.removeItem("token");
       cache.writeData({
-        data:{
-          isLoggedIn:false
+        data: {
+          isLoggedIn: false
         }
-      })
+      });
       window.location.href = "/";
       return null;
     },
@@ -38,16 +38,5 @@ export const resolvers: Resolvers = {
       return null;
     }
   },
-  Query: {
-    // getCurrentCat: (_, __, { cache, getCacheKey }) => {
-    //   const query = gql`
-    //     {
-    //       current_cat_uuid @client
-    //     }
-    //   `
-    //   const q = cache.readQuery({query})
-    //   console.log('dfd')
-    //   return q
-    // }
-  }
+  Query: {}
 };

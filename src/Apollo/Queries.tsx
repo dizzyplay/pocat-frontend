@@ -10,5 +10,4 @@ export const GET_CURRENT_CAT = gql`
   {
     current_cat_uuid @client
   }
-  
 `;

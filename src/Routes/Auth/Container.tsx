@@ -44,7 +44,6 @@ export default () => {
         await localLoginMutation({
           variables: { token: data.userLogin.token }
         });
-        console.log(data);
       } catch (e) {
         toast.error(e.message);
       }
@@ -73,7 +72,6 @@ export default () => {
       }
     } else if (action === "setPassword") {
       //set password
-      console.log(userId, setPassword.value);
       const { data } = await setUserPasswordMutation();
       if (data.setUserPassword) {
         toast.success(
