@@ -17,7 +17,16 @@ export default {
   grey400: "#c8c8c8",
   grey500: "#969696",
   grey600: "#646464",
-  grey700: "#464646",
+  grey700: "#4b4b4b",
   black: "#000000",
-  white: "#ffffff"
+  white: "#ffffff",
+  shadowBox: `border-radius: 10px;
+              box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
+              transition: all 0.3s;
+                &:hover {
+                  transition: all 0.3s;
+                  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.1);
+              }
+              background-color: white;
+              `
 };

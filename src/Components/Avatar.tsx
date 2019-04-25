@@ -10,7 +10,7 @@ interface AvatarType {
 
 const getSize = (size: SIZE) => {
   let num: number;
-  if (size === "sm") num = 30;
+  if (size === "sm") num = 32;
   else if (size === "md") num = 50;
   else num = 100;
   return `

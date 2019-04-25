@@ -35,7 +35,7 @@ export const resolvers: Resolvers = {
     },
     setCurrentCat: (_, { uuid }, { cache }) => {
       cache.writeData({ data: { current_cat_uuid: uuid } });
-      return null;
+      return uuid;
     }
   },
   Query: {}

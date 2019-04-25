@@ -41,11 +41,16 @@ export default () => {
     if (action === "login") {
       try {
         const { data } = await userLoginMutation();
-        await localLoginMutation({
-          variables: { token: data.userLogin.token }
-        });
+        if(data.userLogin.token){
+          await localLoginMutation({
+            variables: { token: data.userLogin.token }
+          });
+        }else{
+          toast.error('로그인 정보가 잘못 되었습니다.')
+        }
       } catch (e) {
-        toast.error(e.message);
+        toast.error("로그인 정보가 잘못되었습니다.");
+        console.log(e.message)
       }
     } else if (action === "signUp") {
       try {

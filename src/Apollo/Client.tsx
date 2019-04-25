@@ -4,7 +4,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "http://10.0.1.10:3001",
+  uri: "http://10.0.1.19:3006",
   clientState: {
     defaults,
     resolvers

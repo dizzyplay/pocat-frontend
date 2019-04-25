@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useQuery } from "react-apollo-hooks";
-import { gql } from "apollo-boost";
 import { MenuIcon } from "./Icons";
 import CatList from "./CatList";
 
@@ -12,7 +10,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid;
   align-items: center;
 `;
 
@@ -23,26 +20,30 @@ const Menu1 = styled.div`
 `;
 
 const Logo = styled.div`
-  font-family: Avenir;
+  font-family: Avenir, serif;
   font-size: 23px;
   font-weight: 600;
   letter-spacing: 3px;
-  border: 1px solid;
   color: #5aa3ff;
 `;
 const HeaderColumn = styled.div`
   width: 100px;
   text-align: center;
-  border: 1px solid;
 `;
 
 const CatListContainer = styled.div`
   width: 157px;
-  border: 1px solid;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
 `;
 
-export default () => {
+type Props = {
+  catList: [];
+};
+
+export default (props: Props) => {
   return (
     <Container>
       <HeaderColumn>
@@ -50,7 +51,7 @@ export default () => {
       </HeaderColumn>
       <Logo>POCAT</Logo>
       <CatListContainer>
-        <CatList />
+        <CatList catList={props.catList} />
       </CatListContainer>
     </Container>
   );
