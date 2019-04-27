@@ -40,7 +40,6 @@ export default (props: Props) => {
 };
 
 const Container = styled.div`
-  ${(props: mytheme) => props.theme.shadowBox};
   width: 382px;
   height: 100px;
   padding: 25px 19px 25px 19px;

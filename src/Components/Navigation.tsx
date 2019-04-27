@@ -20,7 +20,6 @@ const Menu1 = styled.div`
 `;
 
 const Logo = styled.div`
-  font-family: Avenir, serif;
   font-size: 23px;
   font-weight: 600;
   letter-spacing: 3px;
