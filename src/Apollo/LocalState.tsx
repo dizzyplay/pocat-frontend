@@ -1,5 +1,6 @@
 import { Resolvers } from "apollo-client/core/types";
 import { gql } from "apollo-boost";
+import { useQuery } from "react-apollo-hooks";
 
 interface defaultTypes {
   isLoggedIn: boolean;

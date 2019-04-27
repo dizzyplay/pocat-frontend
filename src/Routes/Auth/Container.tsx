@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Presenter from "./Presenter";
 import { useFormInput } from "../../Hooks/form";
 import { toast } from "react-toastify";
-import { useMutation, useQuery } from "react-apollo-hooks";
+import { useMutation } from "react-apollo-hooks";
 import {
   CONFIRM_SECRET,
   LOCAL_LOGIN,
@@ -41,16 +41,16 @@ export default () => {
     if (action === "login") {
       try {
         const { data } = await userLoginMutation();
-        if(data.userLogin.token){
+        if (data.userLogin.token) {
           await localLoginMutation({
             variables: { token: data.userLogin.token }
           });
-        }else{
-          toast.error('로그인 정보가 잘못 되었습니다.')
+        } else {
+          toast.error("로그인 정보가 잘못 되었습니다.");
         }
       } catch (e) {
         toast.error("로그인 정보가 잘못되었습니다.");
-        console.log(e.message)
+        console.log(e.message);
       }
     } else if (action === "signUp") {
       try {
@@ -68,7 +68,6 @@ export default () => {
         const { data } = await confirmSecret();
         if (data.confirmSecret) {
           toast.success("인증이 성공적으로 완료되었습니다.");
-          console.log(data);
           setUserId(data.confirmSecret.uuid);
           setAction("setPassword");
         }

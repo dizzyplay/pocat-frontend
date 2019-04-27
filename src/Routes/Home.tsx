@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Navigation from "../Components/Navigation";
 import CatInfo from "../Components/CatInfo";
 import { useMutation, useQuery } from "react-apollo-hooks";
 import { MY_CAT_LIST } from "../Queries/Cat";
 import Loading from "../Components/Loading";
-import { GET_CURRENT_CAT, SET_CURRENT_CAT } from "../Apollo/Queries";
+import { CHECK_LOGIN, LOCAL_USER_LOGOUT } from "../Apollo/Queries";
+import { CustomError } from "../Components/CustomError";
 
 const Wrapper = styled.div`
   margin: 0;
@@ -22,7 +23,24 @@ const Home = () => {
         <CatInfo initCat={myCatList[0]} />
       </Wrapper>
     );
-  } else return <Loading />;
+  } else if (loading) return <Loading />;
+  else {
+    return <LoginCheck />;
+  }
+};
+
+const LoginCheck = () => {
+  const { data, error, loading } = useQuery(CHECK_LOGIN);
+  const logoutMutation = useMutation(LOCAL_USER_LOGOUT);
+  if (loading) {
+    return <Loading />;
+  } else if (error) {
+    setTimeout(async () => {
+      await logoutMutation();
+    }, 2000);
+    return <CustomError />;
+  }
+  return null;
 };
 
 export default Home;
