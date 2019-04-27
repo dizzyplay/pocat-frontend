@@ -1,7 +1,7 @@
 import React from "react";
 import { SmallCard } from "../SmallCard";
 import styled from "styled-components";
-import { bmiToString, getCatStatusValue, DateToString } from "../../utils";
+import { bmiToString, getCatStatusValue, dateToString } from "../../utils";
 
 type Props = {
   catWeightInfo: {
@@ -32,7 +32,7 @@ export default (props: Props) => {
     bmiString = bmiToString(BMI);
     const catStatus = getCatStatusValue(
       catWeightInfo.pregnant,
-      DateToString(catWeightInfo.birth, false),
+      dateToString(catWeightInfo.birth, false),
       catWeightInfo.neutering,
       BMI
     );

@@ -5,7 +5,7 @@ import { useQuery } from "react-apollo-hooks";
 import { CAT_INFO } from "../Queries/Cat";
 import Loading from "./Loading";
 import Avatar from "./Avatar";
-import { DateToString } from "../utils";
+import { dateToString } from "../utils";
 
 type Props = {
   uuid: string;
@@ -28,9 +28,9 @@ export default (props: Props) => {
             <BigText>{catInfo.name}</BigText>
             <KindsText>{catInfo.kinds.title}</KindsText>
             <SmallText>
-              {DateToString(catInfo.birth, false)}
+              {dateToString(catInfo.birth, false)}
               <br />
-              {DateToString(catInfo.birth, true)}
+              {dateToString(catInfo.birth, true)}
             </SmallText>
           </DetailInfo>
         </HorizonDivider>

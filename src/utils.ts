@@ -1,4 +1,4 @@
-export const DateToString = (date: string, fromNow: boolean): string => {
+export const dateToString = (date: string, fromNow: boolean): string => {
   const birthObj = new Date(date);
   if (fromNow) {
     const current = new Date();
