@@ -58,9 +58,12 @@ const DropDownContent = styled.div`
   width: 100%;
   display: flex;
   position: absolute;
-  top: -26px;
+  top: -27px;
+  left: -1px;
   flex-direction: column;
+  border: 1px solid ${(props: mytheme) => props.theme.grey200};
   z-index: 1;
+  user-select: none;
 `;
 
 const Button = styled.div`
@@ -69,6 +72,7 @@ const Button = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  user-select: none;
 `;
 
 const Name = styled.span`
