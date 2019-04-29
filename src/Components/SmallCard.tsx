@@ -5,17 +5,18 @@ import { mytheme } from "../Styles/Theme";
 type Props = {
   title: string;
   infoText: string;
+  infoTextColor?: string;
 };
 
 export const SmallCard = (props: Props) => {
-  const { title, infoText } = props;
+  const { title, infoText, infoTextColor } = props;
   return (
     <Container>
       <TitlePosition>
         <Title>{title}</Title>
       </TitlePosition>
       <BottomPosition>
-        <BlueTitle>{infoText}</BlueTitle>
+        <ColoredTitle color={infoTextColor}>{infoText}</ColoredTitle>
       </BottomPosition>
     </Container>
   );
@@ -51,7 +52,7 @@ const BottomPosition = styled.div`
   right: 22px;
 `;
 
-const BlueTitle = styled.span`
-  color: ${(props: mytheme) => props.theme.blue};
+const ColoredTitle = styled.span`
+  color: ${(props: any) => (props.color ? props.color : props.theme.blue)};
   font-size: 40px;
 `;

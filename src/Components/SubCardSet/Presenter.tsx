@@ -21,7 +21,10 @@ type Props = {
 
 export default (props: Props) => {
   const { catWeightInfo } = props;
-  let currentWeight, BMI, bmiString, feedReq;
+  let currentWeight,
+    BMI,
+    bmiString: { value: string; color: string } = { value: "", color: "" },
+    feedReq;
   if (
     catWeightInfo.weights[0] &&
     catWeightInfo.ribcage &&
@@ -46,15 +49,18 @@ export default (props: Props) => {
     <Wrapper>
       <SmallCard
         title={"비만도"}
-        infoText={bmiString ? bmiString : undefined}
+        infoText={bmiString ? bmiString.value : undefined}
+        infoTextColor={bmiString.color}
       />
       <SmallCard
         title={"체지방율"}
         infoText={BMI ? String(BMI + "%") : undefined}
+        infoTextColor={bmiString.color}
       />
       <SmallCard
         title={"몸무게"}
         infoText={currentWeight ? currentWeight + "Kg" : undefined}
+        infoTextColor={bmiString.color}
       />
       <SmallCard
         title={"하루 사료량"}
