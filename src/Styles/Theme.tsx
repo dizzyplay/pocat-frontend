@@ -21,11 +21,11 @@ export default {
   black: "#000000",
   white: "#ffffff",
   shadowBox: `border-radius: 10px;
-              box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
+              box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
               transition: all 0.3s;
                 &:hover {
                   transition: all 0.3s;
-                  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.1);
+                  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
               }
               background-color: white;
               `

@@ -1,4 +1,4 @@
-export const dateToString = (date: string, fromNow: boolean): string => {
+export const birthdateToString = (date: string, fromNow: boolean): string => {
   const birthObj = new Date(date);
   if (fromNow) {
     const current = new Date();
@@ -16,9 +16,24 @@ export const dateToString = (date: string, fromNow: boolean): string => {
     }
   } else {
     return `${birthObj.getFullYear()}년 ${birthObj.getMonth() +
-      1}월 ${birthObj.getDate()}일생 `;
+    1}월 ${birthObj.getDate()}일생 `;
   }
 };
+
+export const dateToString = (date: string, flag?: { full?: boolean, month?: boolean, day?: boolean }): string => {
+  if (!flag) flag = {}
+  const strDate = new Date(date)
+  const year = strDate.getFullYear()
+  const month = strDate.getMonth() + 1
+  const days = strDate.getDate()
+  if (flag.day) {
+    return `${days}일`
+  } else if (flag.month) {
+    return `${month}월 ${days}일`
+  } else if (flag.full) {
+    return `${year}년 ${month}월 ${days}일`
+  } else return `${year}년 ${month}월`
+}
 
 export const bmiToString = (BMI: number): string => {
   if (BMI > 30) return "비만";
@@ -51,4 +66,5 @@ export const getCatStatusValue = (
     return 1.2;
   }
 };
-export const feedRequirement = () => {};
+export const feedRequirement = () => {
+};

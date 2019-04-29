@@ -1,12 +1,13 @@
 import React from "react";
 import { SmallCard } from "../SmallCard";
 import styled from "styled-components";
-import { bmiToString, getCatStatusValue, dateToString } from "../../utils";
+import { bmiToString, getCatStatusValue, birthdateToString } from "../../utils";
+import CatWeightGraphCard from "../CatWeightGraphCard";
 
 type Props = {
   catWeightInfo: {
     weights: { weight: string }[];
-    id: string;
+    uuid: string;
     ribcage: number;
     LIM: number;
     pregnant: boolean;
@@ -32,7 +33,7 @@ export default (props: Props) => {
     bmiString = bmiToString(BMI);
     const catStatus = getCatStatusValue(
       catWeightInfo.pregnant,
-      dateToString(catWeightInfo.birth, false),
+      birthdateToString(catWeightInfo.birth, false),
       catWeightInfo.neutering,
       BMI
     );
@@ -53,12 +54,13 @@ export default (props: Props) => {
       />
       <SmallCard
         title={"몸무게"}
-        infoText={currentWeight ? currentWeight : undefined}
+        infoText={currentWeight ? currentWeight + "Kg" : undefined}
       />
       <SmallCard
         title={"하루 사료량"}
         infoText={feedReq ? feedReq + "g" : undefined}
       />
+      <CatWeightGraphCard uuid={catWeightInfo.uuid} />
     </Wrapper>
   );
 };

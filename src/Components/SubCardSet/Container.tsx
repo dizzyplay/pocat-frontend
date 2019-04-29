@@ -11,6 +11,7 @@ type Props = {
 const CAT_WEIGHT_INFO = gql`
   query catInfo($uuid: String!) {
     catInfo(uuid: $uuid) {
+      uuid
       ribcage
       LIM
       neutering
