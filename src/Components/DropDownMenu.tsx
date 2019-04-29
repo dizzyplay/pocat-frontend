@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import { mytheme } from "../Styles/Theme";
+import { useMutation } from "react-apollo-hooks";
+import { LOCAL_USER_LOGOUT } from "../Apollo/Queries";
 
 type Props = {
   itemList: any;
@@ -11,11 +13,17 @@ type Props = {
 
 export const DropDownMenu = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const logoutMutation = useMutation(LOCAL_USER_LOGOUT);
   const { itemList, handleSelect } = props;
   const [currentCat, setCurrentCat] = useState(itemList[0]);
   const handleOpen = () => {
     setIsOpen(true);
   };
+
+  const handleLogout = () => {
+    logoutMutation();
+  };
+
   const selectCat = (uuid: string, cat: any) => {
     handleSelect(uuid);
     setCurrentCat(cat);
@@ -31,6 +39,10 @@ export const DropDownMenu = (props: Props) => {
               <Name>{item.name}</Name>
             </Button>
           ))}
+          <HorizenLine />
+          <CenteredButton onClick={handleLogout}>
+            <CenteredName>로그아웃</CenteredName>
+          </CenteredButton>
         </DropDownContent>
       </Wrapper>
     );
@@ -86,4 +98,17 @@ const Name = styled.span`
   width: 80px;
   letter-spacing: -0.3px;
   text-align: left;
+`;
+
+const HorizenLine = styled.hr`
+  border-top: 1px solid ${(props: mytheme) => props.theme.grey200};
+  width: 70%;
+`;
+
+const CenteredButton = styled(Button)`
+  justify-content: center;
+`;
+
+const CenteredName = styled(Name)`
+  text-align: center;
 `;
