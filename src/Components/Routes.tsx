@@ -5,21 +5,20 @@ import Auth from "../Routes/Auth";
 import { useMutation, useQuery } from "react-apollo-hooks";
 import { CHECK_LOGIN, LOCAL_USER_LOGOUT } from "../Apollo/Queries";
 import Loading from "./Loading";
-import { CustomError } from "./CustomError";
 
 interface RouterProps {
   isLoggedIn: boolean;
 }
 
 const LoginRoutes = () => {
-  const { error, loading } = useQuery(CHECK_LOGIN);
+  const { data, error, loading } = useQuery(CHECK_LOGIN);
   const logoutMutation = useMutation(LOCAL_USER_LOGOUT);
   if (loading) return <Loading />;
-  else if (error) {
+  else if (!data.getUser && error) {
     setTimeout(async () => {
       await logoutMutation();
-    }, 2000);
-    return <CustomError />;
+    }, 1000);
+    return <Loading />;
   } else
     return (
       <>

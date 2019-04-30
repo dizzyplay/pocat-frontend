@@ -31,7 +31,7 @@ export const resolvers: Resolvers = {
           isLoggedIn: false
         }
       });
-      window.location.href = "/";
+      // window.location.href = "/";
       return null;
     },
     setCurrentCat: (_, { uuid }, { cache }) => {

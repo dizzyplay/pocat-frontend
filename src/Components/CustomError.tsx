@@ -6,10 +6,7 @@ export const CustomError = () => {
   return (
     <Container>
       <MessageContainer>
-        <Message>
-          유저인증 정보오류
-          <br /> 메인으로 이동합니다
-        </Message>
+        <Message>오류가 발생했습니다</Message>
       </MessageContainer>
     </Container>
   );

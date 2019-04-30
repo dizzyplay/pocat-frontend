@@ -111,10 +111,10 @@ const Auth = ({
               {...password}
               type={"password"}
             />
-            <Button title={"로그인"} primary={true} />
+            <Button title={"로그인"} primary={true} height={"50px"} />
           </form>
           <Link onClick={() => setAction("signUp")}>
-            <Button title={"회원가입"} primary={false} />
+            <Button title={"회원가입"} primary={false} height={"50px"} />
           </Link>
         </Form>
       </>
@@ -127,10 +127,10 @@ const Auth = ({
         <Form>
           <form onSubmit={onSubmit}>
             <Input label={"Email"} required={true} {...email} type={"email"} />
-            <Button title={"이메일로 가입"} primary={true} />
+            <Button title={"이메일로 가입"} primary={true} height={"50px"} />
           </form>
           <Link onClick={() => setAction("login")}>
-            <Button title={"로그인"} primary={false} />
+            <Button title={"로그인"} primary={false} height={"50px"} />
           </Link>
         </Form>
       </>

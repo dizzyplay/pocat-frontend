@@ -39,7 +39,7 @@ export const DropDownMenu = (props: Props) => {
               <Name>{item.name}</Name>
             </Button>
           ))}
-          <HorizenLine />
+          <HorizonLine />
           <CenteredButton onClick={handleLogout}>
             <CenteredName>로그아웃</CenteredName>
           </CenteredButton>
@@ -100,7 +100,7 @@ const Name = styled.span`
   text-align: left;
 `;
 
-const HorizenLine = styled.hr`
+const HorizonLine = styled.hr`
   border-top: 1px solid ${(props: mytheme) => props.theme.grey200};
   width: 70%;
 `;

@@ -4,6 +4,7 @@ import { mytheme } from "../Styles/Theme";
 
 interface divprops {
   primary: boolean;
+  height: string;
   theme: {
     [key: string]: any;
   };
@@ -11,7 +12,7 @@ interface divprops {
 
 const Container = styled.button`
   width: 100%;
-  height: 50px;
+  height: ${(props: divprops) => props.height};
   border-radius: ${(props: mytheme) => props.theme.borderRadius};
   color: ${(props: divprops) => (props.primary ? "#ffffff" : "#5aa3ff")};
   transition: all 0.3s;
@@ -36,8 +37,17 @@ const Container = styled.button`
 interface ButtonProps {
   title: string;
   primary: boolean;
+  height?: string;
 }
 
-export const Button = (props: ButtonProps) => {
-  return <Container primary={props.primary}>{props.title}</Container>;
+export const Button = ({
+  title,
+  primary = false,
+  height = "40px"
+}: ButtonProps) => {
+  return (
+    <Container primary={primary} height={height}>
+      {title}
+    </Container>
+  );
 };
