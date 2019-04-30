@@ -47,12 +47,9 @@ const Container = styled.div`
   margin-top: 100px;
 `;
 
-interface TType {
+interface TType extends mytheme {
   size: string;
   weight?: string;
-  theme: {
-    [key: string]: any;
-  };
 }
 const Title = styled.div`
   color: ${(props: mytheme) => props.theme.blue};

@@ -23,6 +23,7 @@ const Logo = styled.div`
   font-weight: 600;
   letter-spacing: 3px;
   color: #5aa3ff;
+  user-select: none;
 `;
 const HeaderColumn = styled.div`
   width: 100px;

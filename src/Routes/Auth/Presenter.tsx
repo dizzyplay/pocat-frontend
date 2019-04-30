@@ -47,7 +47,7 @@ const SmallLogo = styled.div`
 `;
 
 const Link = styled.span`
-  color: ${(props: mytheme) => props.theme.blueColor};
+  color: ${(props: mytheme) => props.theme.blue};
   cursor: pointer;
 `;
 

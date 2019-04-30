@@ -1,23 +1,20 @@
 import React, { FunctionComponentElement, ReactElement } from "react";
 import styled from "styled-components";
 
-interface divprops {
+interface divProps extends mytheme {
   primary: boolean;
   height: string;
-  theme: {
-    [key: string]: any;
-  };
 }
 
 const Container = styled.button`
   width: 100%;
-  height: ${(props: divprops) => props.height};
+  height: ${(props: divProps) => props.height};
   border-radius: ${(props: mytheme) => props.theme.borderRadius};
-  color: ${(props: divprops) => (props.primary ? "#ffffff" : "#5aa3ff")};
+  color: ${(props: divProps) => (props.primary ? "#ffffff" : "#5aa3ff")};
   transition: all 0.3s;
-  border: ${(props: divprops) =>
+  border: ${(props: divProps) =>
     props.primary ? props.theme.blue : `1px solid ${props.theme.blue}`};
-  background-color: ${(props: divprops) =>
+  background-color: ${(props: divProps) =>
     props.primary ? props.theme.blue : props.theme.white};
   font-size: 17px;
   font-weight: 400;
