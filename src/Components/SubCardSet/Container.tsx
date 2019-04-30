@@ -29,11 +29,13 @@ const CAT_WEIGHT_INFO = gql`
 `;
 
 export default (props: Props) => {
-  const { data, loading } = useQuery(CAT_WEIGHT_INFO, {
+  const { data, loading, error } = useQuery(CAT_WEIGHT_INFO, {
     variables: { uuid: props.uuid }
   });
   if (loading) return <Loading />;
-  else {
+  else if (!data.catInfo.weights[0]) {
+    return <div>no info </div>;
+  } else {
     const { catInfo } = data;
     return <Presenter catWeightInfo={catInfo} />;
   }
