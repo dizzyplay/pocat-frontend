@@ -1,6 +1,5 @@
 import React, { FunctionComponentElement, ReactElement } from "react";
 import styled from "styled-components";
-import { mytheme } from "../Styles/Theme";
 
 interface divprops {
   primary: boolean;
@@ -38,15 +37,17 @@ interface ButtonProps {
   title: string;
   primary: boolean;
   height?: string;
+  onClick?: any;
 }
 
 export const Button = ({
   title,
   primary = false,
-  height = "40px"
+  height = "40px",
+  onClick
 }: ButtonProps) => {
   return (
-    <Container primary={primary} height={height}>
+    <Container primary={primary} height={height} onClick={onClick}>
       {title}
     </Container>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "../../Components/Button";
 import styled from "styled-components";
-import { mytheme } from "../../Styles/Theme";
 import { Input } from "../../Components/Input";
 
 const Wrapper = styled.div`

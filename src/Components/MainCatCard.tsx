@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { mytheme } from "../Styles/Theme";
 import { useQuery } from "react-apollo-hooks";
 import { CAT_INFO } from "../Queries/Cat";
 import Loading from "./Loading";

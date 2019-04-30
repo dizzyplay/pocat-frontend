@@ -1,26 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import { mytheme } from "../../Styles/Theme";
-import { Button } from "../Button";
+import { Button } from "./Button";
 
-export default () => {
-  // @ts-ignore
+interface Props {
+  setIndex: (v: number) => void;
+}
+
+export default ({ setIndex }: Props) => {
   return (
-    <Wrapper>
-      <Container>
-        <Title size={"32px"} weight={"bold"}>
-          야옹이의 정보를 입력해주세요
-        </Title>
-        <Title size={"16px"}>
-          건강한 반려묘를 위해 체중관리는 필수
-          <br />
-          행복한 야옹이를 위해 포캣에서 건강을 관리하세요
-        </Title>
-        <div style={{ width: "149px", marginTop: "30px" }}>
-          <Button title={"정보입력하기"} primary={true} />
-        </div>
-      </Container>
-    </Wrapper>
+    <Container>
+      <Title size={"32px"} weight={"bold"}>
+        야옹이의 정보를 입력해주세요
+      </Title>
+      <Title size={"16px"}>
+        건강한 반려묘를 위해 체중관리는 필수
+        <br />
+        행복한 야옹이를 위해 포캣에서 건강을 관리하세요
+      </Title>
+      <div style={{ width: "149px", marginTop: "30px" }}>
+        <Button
+          title={"정보입력하기"}
+          primary={true}
+          onClick={() => setIndex(1)}
+        />
+      </div>
+    </Container>
   );
 };
 

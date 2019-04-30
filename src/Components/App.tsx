@@ -3,7 +3,7 @@ import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import GlobalStyle from "../Styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
-import Theme, { mytheme } from "../Styles/Theme";
+import Theme from "../Styles/Theme";
 import { HashRouter } from "react-router-dom";
 import styled from "styled-components";
 import Router from "./Routes";

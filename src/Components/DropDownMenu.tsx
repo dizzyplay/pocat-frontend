@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Avatar from "./Avatar";
-import { mytheme } from "../Styles/Theme";
 import { useMutation } from "react-apollo-hooks";
 import { LOCAL_USER_LOGOUT } from "../Apollo/Queries";
 

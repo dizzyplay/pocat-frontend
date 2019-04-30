@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Avatar from "./Avatar";
-import { useQuery, useMutation } from "react-apollo-hooks";
-import { GET_CURRENT_CAT, SET_CURRENT_CAT } from "../Apollo/Queries";
+import React, { useState } from "react";
+import { useMutation } from "react-apollo-hooks";
+import { SET_CURRENT_CAT } from "../Apollo/Queries";
 import styled from "styled-components";
 import { DropDownMenu } from "./DropDownMenu";
 

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { MenuIcon } from "./Icons";
 import CatList from "./CatList";
-import { mytheme } from "../Styles/Theme";
 
 const Container = styled.div`
   margin: 0;

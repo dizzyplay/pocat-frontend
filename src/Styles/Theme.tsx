@@ -1,9 +1,3 @@
-export interface mytheme {
-  theme: {
-    [key: string]: any;
-  };
-}
-
 export default {
   maxWidth: "935px",
   authBox: "330px",

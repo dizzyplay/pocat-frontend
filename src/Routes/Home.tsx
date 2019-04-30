@@ -3,9 +3,10 @@ import styled from "styled-components";
 import Navigation from "../Components/Navigation";
 import CatInfo from "../Components/CatInfo";
 import Loading from "../Components/Loading";
-import NoCat from "../Components/NoCat";
+import MainSlider from "../Components/MainSlider";
 import { MY_CAT_LIST } from "../Queries/Cat";
 import { useQuery } from "react-apollo-hooks";
+import { Helmet } from "react-helmet";
 
 const Wrapper = styled.div`
   margin: 0;
@@ -20,11 +21,14 @@ const Home = () => {
   console.log(data);
   if (loading) return <Loading />;
   else if (data.myCatList.length === 0) {
-    return <NoCat />;
+    return <MainSlider />;
   } else if (data.myCatList) {
     const { myCatList } = data;
     return (
       <Wrapper>
+        <Helmet>
+          <title>POCAT | HOME</title>
+        </Helmet>
         <Navigation catList={myCatList} />
         <CatInfo initCat={myCatList[0]} />
       </Wrapper>

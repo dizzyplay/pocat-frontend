@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
-import { mytheme } from "../Styles/Theme";
 
 const blink = keyframes`
   from {
@@ -10,7 +9,7 @@ const blink = keyframes`
   }
   to {
   transform: scale(1);
-    background-color: #969696;
+    background-color: #5aa3ff;
   }
 `;
 const Load = styled.div`
