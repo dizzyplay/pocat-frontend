@@ -28,15 +28,6 @@ export default ({ setIndex }: Props) => {
   );
 };
 
-const Wrapper = styled.div`
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 800px;
-`;
-
 const Container = styled.div`
   width: 450px;
   display: flex;

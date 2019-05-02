@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import index from "./index";
+import styled, { keyframes } from "styled-components";
 
 interface IProps {
   currentIndex: number;
@@ -42,6 +41,21 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
+const fadein = keyframes`
+  from {
+    background-color:#9ec9ff;
+  }
+
+  50%{
+    background-color:#5aa3ff;
+    
+  }
+  100%{
+    background-color:#9ec9ff;
+  }
+  
+`;
+
 const Circle = styled.div`
   background-color: ${(props: mytheme) => props.theme.blue};
   border-radius: 50%;
@@ -49,6 +63,7 @@ const Circle = styled.div`
   height: 50px;
   color: white;
   position: relative;
+  animation: ${fadein} 1.5s infinite;
 `;
 
 const EmptyCircle = styled.div`
