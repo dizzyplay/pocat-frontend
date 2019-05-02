@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Navigation from "../Components/Navigation";
 import CatInfo from "../Components/CatInfo";
 import Loading from "../Components/Loading";
-import MainSlider from "../Components/MainSlider";
 import { MY_CAT_LIST } from "../Queries/Cat";
 import { useQuery } from "react-apollo-hooks";
 import { Helmet } from "react-helmet";
+import AddCatSlider from "../Components/AddCatSlider";
 
 const Wrapper = styled.div`
   margin: 0;
@@ -21,7 +21,7 @@ const Home = () => {
   console.log(data);
   if (loading) return <Loading />;
   else if (data.myCatList.length === 0) {
-    return <MainSlider />;
+    return <AddCatSlider />;
   } else if (data.myCatList) {
     const { myCatList } = data;
     return (
