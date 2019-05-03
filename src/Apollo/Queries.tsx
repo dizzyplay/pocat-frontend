@@ -25,3 +25,25 @@ export const CHECK_LOGIN = gql`
     }
   }
 `;
+
+export const CAT_KINDS_LIST = gql`
+  query {
+    catKindsList {
+      id
+      title
+    }
+  }
+`;
+
+export const ADD_CAT = gql`
+  mutation addCat(
+    $name: String!
+    $gender: String!
+    $kindsId: Int!
+    $birth: String!
+  ) {
+    addCat(name: $name, gender: $gender, kindsId: $kindsId, birth: $birth) {
+      uuid
+    }
+  }
+`;

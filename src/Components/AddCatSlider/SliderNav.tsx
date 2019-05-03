@@ -9,7 +9,6 @@ interface IProps {
 const SliderNav = (props: IProps) => {
   const { currentIndex, indexLength } = props;
   const indexArray = Array.from(new Array(indexLength), (x, idx) => idx + 1);
-  console.log(indexArray);
   return (
     <Container>
       <CrossLineDiv />
@@ -33,8 +32,8 @@ const SliderNav = (props: IProps) => {
 export default SliderNav;
 
 const Container = styled.div`
-  position: fixed;
-  top: 200px;
+  position: absolute;
+  top: 100px;
   display: flex;
   flex-direction: row;
   width: 250px;

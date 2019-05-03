@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Container = styled.input`
   width: 100%;
   height: 23px;
+  margin-left: 10px;
   font-size: 14px;
   font-weight: 400;
   border: ${(props: mytheme) => `solid 1px ${props.theme.grey400}`};

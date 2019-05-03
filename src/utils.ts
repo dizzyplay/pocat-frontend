@@ -66,5 +66,7 @@ export const getCatStatusValue = (
     return 1.2;
   }
 };
-export const feedRequirement = () => {
-};
+
+export const makeDateArrayForSelect = (start:number,len:number)=>{
+  return Array.from({length:len},(i,idx)=>({name:String(start+idx),value:String(start+idx)}))
+}

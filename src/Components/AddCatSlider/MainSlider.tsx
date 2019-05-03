@@ -3,6 +3,8 @@ import styled, { keyframes } from "styled-components";
 import NoCat from "./NoCat";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import StepOne from "./StepOne";
+import { useMutation, useQuery } from "react-apollo-hooks";
+import { ADD_CAT, CAT_KINDS_LIST } from "../../Apollo/Queries";
 
 interface IProps {
   currentIndex: number;
@@ -10,6 +12,8 @@ interface IProps {
 }
 
 export default (props: IProps) => {
+  const { data } = useQuery(CAT_KINDS_LIST);
+  const addCatMutation = useMutation(ADD_CAT);
   const { currentIndex, setIndex } = props;
   if (currentIndex === 0) {
     return (
@@ -26,8 +30,13 @@ export default (props: IProps) => {
   } else if (currentIndex === 1) {
     return (
       <Wrapper>
-        <StepOne />
-        <button onClick={() => setIndex(2)}>다음으로</button>
+        {data.catKindsList && (
+          <StepOne
+            catKindsList={data.catKindsList}
+            addCatMutation={addCatMutation}
+            setIndex={setIndex}
+          />
+        )}
       </Wrapper>
     );
   } else if (currentIndex === 2) {
@@ -39,7 +48,6 @@ export default (props: IProps) => {
   }
   return (
     <Wrapper>
-      <StepOne />
       <button onClick={() => setIndex(0)}>다음으로</button>
     </Wrapper>
   );
@@ -58,5 +66,12 @@ const slide = keyframes`
 `;
 
 const Wrapper = styled.div`
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
   animation: ${slide} 0.3s 1;
 `;
