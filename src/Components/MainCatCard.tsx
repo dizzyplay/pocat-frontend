@@ -16,13 +16,13 @@ export default (props: Props) => {
   });
   if (loading) return <Loading />;
   else {
-    console.log("main  cat card");
-    console.log(data);
     const { catInfo } = data;
     return (
       <Container>
         <HorizonDivider>
-          <Avatar size={"lg"} url={catInfo.image} />
+          <CenterColumn>
+            <Avatar size={"lg"} url={catInfo.image} />
+          </CenterColumn>
           <DetailInfo>
             <BigText>{catInfo.name}</BigText>
             <KindsText>{catInfo.kinds.title}</KindsText>
@@ -32,30 +32,63 @@ export default (props: Props) => {
               {birthdateToString(catInfo.birth, true)}
             </SmallText>
           </DetailInfo>
+          <CenterColumn>
+            <VerticalDivider>
+              <ExtraSmallText
+                style={{ textAlign: "right" }}
+                onClick={() => alert("정보수정창을 모달로할가요 어떻게 할가요")}
+              >
+                정보수정
+              </ExtraSmallText>
+              <SmallText>
+                <br />
+                중성화: {catInfo.neutering ? "네" : "아니오"}
+                <br />
+                임신중: {catInfo.pregnant ? "네" : "아니오"}
+              </SmallText>
+            </VerticalDivider>
+          </CenterColumn>
         </HorizonDivider>
       </Container>
     );
   }
 };
-
+const CenterColumn = styled.div`
+  display: flex;
+  width: 130px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
 const Container = styled.div`
   width: 382px;
-  height: 100px;
+  height: 110px;
   padding: 25px 19px 25px 19px;
   margin-bottom: 15px;
-  align-items: center;
 `;
 
 const HorizonDivider = styled.div`
   display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: 0;
   padding: 0;
   height: 100%;
-  flex-direction: row;
+`;
+
+const VerticalDivider = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100px;
+  padding: 10px 0 40px 0;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const DetailInfo = styled.div`
   display: flex;
+  height: 100%;
+  width: 140px;
   padding: 0;
   margin-left: 20px;
   flex-direction: column;
@@ -72,6 +105,14 @@ const SmallText = styled.span`
   font-size: 12px;
   line-height: 15px;
   color: ${(props: mytheme) => props.theme.grey500};
+`;
+
+const ExtraSmallText = styled(SmallText)`
+  font-size: 10px;
+  letter-spacing: -0.3px;
+  color: ${(props: mytheme) => props.theme.blue};
+  text-decoration: underline;
+  cursor: pointer;
 `;
 
 const KindsText = styled.span`

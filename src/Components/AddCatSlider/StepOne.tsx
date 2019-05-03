@@ -40,33 +40,48 @@ const StepOne = ({
   const year = useInput("2000");
   const month = useInput("1");
   const day = useInput("1");
-  console.log(year.value, month, day);
+  const neutering = useInput("false");
+  const pregnant = useInput("false");
+  console.log(neutering, pregnant);
   const addCatSubmit = async () => {
     const birthday = `${year.value}-${month.value}-${day.value}`;
-    try {
-      const { data } = await addCatMutation({
-        variables: {
-          name: name.value,
-          gender: gender.value,
-          kindsId: Number(catKinds.value),
-          birth: birthday
+    if (name.value.trim() === "") {
+      toast.error("고양이 이름을 입력해주세요");
+      return;
+    }
+    if (name.value.length > 30) {
+      toast.error("고양이 이름이 너무 깁니다. 30자 미만으로 입력해주세요.");
+      return;
+    } else {
+      try {
+        const { data } = await addCatMutation({
+          variables: {
+            name: name.value,
+            gender: gender.value,
+            kindsId: Number(catKinds.value),
+            birth: birthday,
+            neutering: neutering.value === "true",
+            pregnant: pregnant.value === "true"
+          }
+        });
+        if (data.addCat.uuid) {
+          toast.success("고양이가 등록되었습니다!");
+          setTimeout(() => {
+            setIndex(2);
+          }, 1000);
         }
-      });
-      if (data.addCat.uuid) {
-        toast.success("고양이가 등록되었습니다!");
-        setTimeout(() => {
-          setIndex(2);
-        }, 1000);
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
     }
   };
   return (
     <Container>
       <InputContainer>
         <InputLabel>이름</InputLabel>
-        <Input label={""} required={true} type={"text"} {...name} />
+        <div style={{ width: "350px" }}>
+          <Input label={""} required={true} type={"text"} {...name} />
+        </div>
       </InputContainer>
       <InputContainer>
         <InputLabel>성별</InputLabel>
@@ -88,8 +103,28 @@ const StepOne = ({
           <CustomSelect options={yearOptions} onChange={year.onChange} />
           년
           <CustomSelect options={monthOptions} onChange={month.onChange} /> 월
-          <CustomSelect options={dayOptions} onChange={day.onChange} />일
+          <CustomSelect options={dayOptions} onChange={day.onChange} /> 일
         </DateContainer>
+      </InputContainer>
+      <InputContainer>
+        <InputLabel>중성화 여부</InputLabel>
+        <CustomSelect
+          options={[
+            { name: "아니오", value: "false" },
+            { name: "네", value: "true" }
+          ]}
+          onChange={neutering.onChange}
+        />
+      </InputContainer>
+      <InputContainer>
+        <InputLabel>임신 여부</InputLabel>
+        <CustomSelect
+          options={[
+            { name: "아니오", value: "false" },
+            { name: "네", value: "true" }
+          ]}
+          onChange={pregnant.onChange}
+        />
       </InputContainer>
       <Button title={"등록하기"} primary={true} onClick={addCatSubmit} />
     </Container>

@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 
 const Home = () => {
   const { data, loading } = useQuery(MY_CAT_LIST);
-  console.log(data);
   if (loading) return <Loading />;
   else if (data.myCatList.length === 0) {
     return <AddCatSlider />;

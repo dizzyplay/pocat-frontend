@@ -23,6 +23,7 @@ const Container = styled.div`
   ${(props: AvatarType) => getSize(props.size)};
   background-image: url(${(props: AvatarType) => props.url});
   background-size: cover;
+  background-color: ${(props: mytheme) => props.theme.lightBlue};
   border-radius: 50%;
 `;
 

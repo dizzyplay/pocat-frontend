@@ -17,6 +17,8 @@ export const CAT_INFO = gql`
       image
       name
       birth
+      neutering
+      pregnant
       kinds {
         title
       }

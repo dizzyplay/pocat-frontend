@@ -41,8 +41,17 @@ export const ADD_CAT = gql`
     $gender: String!
     $kindsId: Int!
     $birth: String!
+    $neutering: Boolean
+    $pregnant: Boolean
   ) {
-    addCat(name: $name, gender: $gender, kindsId: $kindsId, birth: $birth) {
+    addCat(
+      name: $name
+      gender: $gender
+      kindsId: $kindsId
+      birth: $birth
+      neutering: $neutering
+      pregnant: $pregnant
+    ) {
       uuid
     }
   }
