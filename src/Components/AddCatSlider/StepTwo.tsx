@@ -32,9 +32,12 @@ const StepTwo = (props: IProps) => {
   const weight = useFormInput("");
 
   const handleKeyup = (e: any) => {
-    const re = /^[\d{1,2}]?(\.?\d*?)$/g;
-    if (!re.test(e.key)) {
-      alert("숫자만 입력해주세요.");
+    const re = /^\d{1,2}([.]|[.]\d)?$/;
+    console.log(e.key);
+    if (!re.test(weight.value)) {
+      alert(
+        "99이하의 숫자만 입력해주세요(소수점 첫째자리까지) \n 예) 12.3 또는 12 "
+      );
       weight.setEmpty();
     }
     console.log(weight.value);
