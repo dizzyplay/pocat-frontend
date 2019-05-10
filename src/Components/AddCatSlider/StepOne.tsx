@@ -42,7 +42,6 @@ const StepOne = ({
   const day = useInput("1");
   const neutering = useInput("false");
   const pregnant = useInput("false");
-  console.log(neutering, pregnant);
   const addCatSubmit = async () => {
     const birthday = `${year.value}-${month.value}-${day.value}`;
     if (name.value.trim() === "") {
@@ -133,7 +132,7 @@ const StepOne = ({
 
 export default StepOne;
 
-const useInput = (v: any) => {
+export const useInput = (v: any) => {
   const [value, setValue] = useState(v);
   const handleChange = (e: any) => {
     setValue(e.target.value);
@@ -145,7 +144,7 @@ const Container = styled.div`
   width: 380px;
 `;
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -153,7 +152,7 @@ const InputContainer = styled.div`
   align-items: center;
 `;
 
-const InputLabel = styled.div`
+export const InputLabel = styled.div`
   color: ${(props: mytheme) => props.theme.grey600};
   width: 130px;
   font-weight: 500;

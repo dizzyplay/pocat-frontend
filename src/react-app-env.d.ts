@@ -1,5 +1,5 @@
 /// <reference types="react-scripts" />
-declare interface  mytheme {
+declare interface mytheme {
   theme: {
     maxWidth: string;
     authBox: string;
@@ -16,6 +16,6 @@ declare interface  mytheme {
     grey700: string;
     black: string;
     white: string;
-    shadowBox:string;
+    shadowBox: string;
   };
 }

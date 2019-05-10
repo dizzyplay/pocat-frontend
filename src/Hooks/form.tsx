@@ -5,6 +5,7 @@ type onChangeFuncType = (e: { target: HTMLInputElement }) => void;
 export interface UseInput {
   value: string;
   onChange: onChangeFuncType;
+  setEmpty: any;
 }
 
 export const useFormInput = (defaultValue: string): UseInput => {
@@ -12,5 +13,9 @@ export const useFormInput = (defaultValue: string): UseInput => {
   const handleChange = (e: { target: HTMLInputElement }): void => {
     setValue(e.target.value);
   };
-  return { value, onChange: handleChange };
+  const setEmpty = () => {
+    setValue("");
+  };
+
+  return { value, onChange: handleChange, setEmpty };
 };

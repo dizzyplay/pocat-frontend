@@ -4,7 +4,8 @@ import NoCat from "./NoCat";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import StepOne from "./StepOne";
 import { useMutation, useQuery } from "react-apollo-hooks";
-import { ADD_CAT, CAT_KINDS_LIST } from "../../Apollo/Queries";
+import { ADD_CAT, CAT_KINDS_FEED_LIST } from "../../Apollo/Queries";
+import StepTwo from "./StepTwo";
 
 interface IProps {
   currentIndex: number;
@@ -12,39 +13,42 @@ interface IProps {
 }
 
 export default (props: IProps) => {
-  const { data } = useQuery(CAT_KINDS_LIST);
+  const { data, loading } = useQuery(CAT_KINDS_FEED_LIST);
   const addCatMutation = useMutation(ADD_CAT);
   const { currentIndex, setIndex } = props;
-  if (currentIndex === 0) {
-    return (
-      <>
-        <TransitionGroup>
-          <CSSTransition timeout={300}>
-            <Wrapper>
-              <NoCat setIndex={setIndex} />
-            </Wrapper>
-          </CSSTransition>
-        </TransitionGroup>
-      </>
-    );
-  } else if (currentIndex === 1) {
-    return (
-      <Wrapper>
-        {data.catKindsList && (
-          <StepOne
-            catKindsList={data.catKindsList}
-            addCatMutation={addCatMutation}
-            setIndex={setIndex}
-          />
-        )}
-      </Wrapper>
-    );
-  } else if (currentIndex === 2) {
-    return (
-      <Wrapper>
-        <button onClick={() => setIndex(0)}>처음으로</button>
-      </Wrapper>
-    );
+  if (!loading) {
+    if (currentIndex === 0) {
+      return (
+        <>
+          <TransitionGroup>
+            <CSSTransition timeout={300}>
+              <Wrapper>
+                <NoCat setIndex={setIndex} />
+              </Wrapper>
+            </CSSTransition>
+          </TransitionGroup>
+        </>
+      );
+    } else if (currentIndex === 1) {
+      return (
+        <Wrapper>
+          {data.catKindsList && (
+            <StepOne
+              catKindsList={data.catKindsList}
+              addCatMutation={addCatMutation}
+              setIndex={setIndex}
+            />
+          )}
+        </Wrapper>
+      );
+    } else if (currentIndex === 2) {
+      return (
+        <Wrapper>
+          <StepTwo catFeedsList={data.catFeedsList} />
+          <button onClick={() => setIndex(0)}>처음으로</button>
+        </Wrapper>
+      );
+    }
   }
   return (
     <Wrapper>

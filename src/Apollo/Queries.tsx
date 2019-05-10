@@ -26,9 +26,13 @@ export const CHECK_LOGIN = gql`
   }
 `;
 
-export const CAT_KINDS_LIST = gql`
+export const CAT_KINDS_FEED_LIST = gql`
   query {
     catKindsList {
+      id
+      title
+    }
+    catFeedsList {
       id
       title
     }

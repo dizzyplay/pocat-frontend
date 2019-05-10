@@ -25,6 +25,7 @@ interface inputType {
   type: string;
   value: string;
   onChange: (e: { target: HTMLInputElement }) => any;
+  handleKeyup?: any;
 }
 
 export const Input = ({
@@ -32,7 +33,8 @@ export const Input = ({
   required = true,
   onChange,
   value,
-  type
+  type,
+  handleKeyup
 }: inputType) => {
   return (
     <Container
@@ -41,6 +43,7 @@ export const Input = ({
       type={type}
       value={value}
       placeholder={label}
+      onKeyUp={handleKeyup}
     />
   );
 };

@@ -16,30 +16,33 @@ export const birthdateToString = (date: string, fromNow: boolean): string => {
     }
   } else {
     return `${birthObj.getFullYear()}년 ${birthObj.getMonth() +
-    1}월 ${birthObj.getDate()}일생 `;
+      1}월 ${birthObj.getDate()}일생 `;
   }
 };
 
-export const dateToString = (date: string, flag?: { full?: boolean, month?: boolean, day?: boolean }): string => {
-  if (!flag) flag = {}
-  const strDate = new Date(date)
-  const year = strDate.getFullYear()
-  const month = strDate.getMonth() + 1
-  const days = strDate.getDate()
+export const dateToString = (
+  date: string,
+  flag?: { full?: boolean; month?: boolean; day?: boolean }
+): string => {
+  if (!flag) flag = {};
+  const strDate = new Date(date);
+  const year = strDate.getFullYear();
+  const month = strDate.getMonth() + 1;
+  const days = strDate.getDate();
   if (flag.day) {
-    return `${days}일`
+    return `${days}일`;
   } else if (flag.month) {
-    return `${month}월 ${days}일`
+    return `${month}월 ${days}일`;
   } else if (flag.full) {
-    return `${year}년 ${month}월 ${days}일`
-  } else return `${year}년 ${month}월`
-}
+    return `${year}년 ${month}월 ${days}일`;
+  } else return `${year}년 ${month}월`;
+};
 
-export const bmiToString = (BMI: number): {value:string,color:string} => {
-  if (BMI > 30) return {value:"비만",color:"#ff5421"};
-  else if (BMI < 29 && BMI > 26) return {value:"과체중",color:"#ff5421"};
-  else if (BMI > 16 && BMI < 25) return {value:"정상체중",color:""};
-  else return {value:"마름",color:'black'};
+export const bmiToString = (BMI: number): { value: string; color: string } => {
+  if (BMI > 30) return { value: "비만", color: "#ff5421" };
+  else if (BMI < 29 && BMI > 26) return { value: "과체중", color: "#ff5421" };
+  else if (BMI > 16 && BMI < 25) return { value: "정상체중", color: "" };
+  else return { value: "마름", color: "black" };
 };
 
 export const getCatStatusValue = (
@@ -67,6 +70,9 @@ export const getCatStatusValue = (
   }
 };
 
-export const makeDateArrayForSelect = (start:number,len:number)=>{
-  return Array.from({length:len},(i,idx)=>({name:String(start+idx),value:String(start+idx)}))
-}
+export const makeDateArrayForSelect = (start: number, len: number) => {
+  return Array.from({ length: len }, (i, idx) => ({
+    name: String(start + idx),
+    value: String(start + idx)
+  }));
+};
