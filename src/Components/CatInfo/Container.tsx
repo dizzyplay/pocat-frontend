@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useQuery } from "react-apollo-hooks";
 import { GET_CURRENT_CAT } from "../../Apollo/Queries";
-import { gql } from "apollo-boost";
 import Loading from "../Loading";
-import MainCatCard from "../MainCatCard";
 import Presenter from "./Presenter";
 
-const CAT_INFO = gql`
-  query CatInfo($uuid: String!) {
-    catInfo(uuid: $uuid) {
-      uuid
-      name
-    }
-  }
-`;
 type Props = {
   initCat: any;
 };

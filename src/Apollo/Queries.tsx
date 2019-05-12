@@ -57,6 +57,7 @@ export const ADD_CAT = gql`
       pregnant: $pregnant
     ) {
       uuid
+      name
     }
   }
 `;

@@ -38,11 +38,11 @@ const Container = styled.div`
   margin-top: 100px;
 `;
 
-interface TType extends mytheme {
+export interface TType extends mytheme {
   size: string;
   weight?: string;
 }
-const Title = styled.div`
+export const Title = styled.div`
   color: ${(props: mytheme) => props.theme.blue};
   font-size: ${(props: TType) => props.size};
   font-weight: ${(props: TType) => props.weight};

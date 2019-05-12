@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 export default () => {
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(0);
   return (
     <div>
       <Helmet>

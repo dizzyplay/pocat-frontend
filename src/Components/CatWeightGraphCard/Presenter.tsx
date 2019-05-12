@@ -16,7 +16,6 @@ type Props = {
 };
 
 export default (props: Props) => {
-  console.log(props.catWeights);
   return (
     <Wrapper>
       <Divider>

@@ -15,6 +15,7 @@ interface IProps {
 export default (props: IProps) => {
   const { data, loading } = useQuery(CAT_KINDS_FEED_LIST);
   const addCatMutation = useMutation(ADD_CAT);
+  const [addedCat, setAddedCat] = useState({ name: "", uuid: "" });
   const { currentIndex, setIndex } = props;
   if (!loading) {
     if (currentIndex === 0) {
@@ -37,6 +38,7 @@ export default (props: IProps) => {
               catKindsList={data.catKindsList}
               addCatMutation={addCatMutation}
               setIndex={setIndex}
+              setAddedCat={setAddedCat}
             />
           )}
         </Wrapper>
@@ -44,8 +46,11 @@ export default (props: IProps) => {
     } else if (currentIndex === 2) {
       return (
         <Wrapper>
-          <StepTwo catFeedsList={data.catFeedsList} />
-          <button onClick={() => setIndex(0)}>처음으로</button>
+          <StepTwo
+            catFeedsList={data.catFeedsList}
+            catUuid={addedCat.uuid}
+            catName={addedCat.name}
+          />
         </Wrapper>
       );
     }

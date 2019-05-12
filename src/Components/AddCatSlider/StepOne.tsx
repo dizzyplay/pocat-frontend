@@ -26,11 +26,13 @@ const yearOptions = makeDateArrayForSelect(
 const StepOne = ({
   catKindsList,
   addCatMutation,
-  setIndex
+  setIndex,
+  setAddedCat
 }: {
   catKindsList: CatKindsListType[];
   addCatMutation: (args: any) => any;
   setIndex: (args: number) => void;
+  setAddedCat: any;
 }) => {
   const catKindsArray: SelectType[] = [];
   catKindsList.forEach(c => catKindsArray.push({ name: c.title, value: c.id }));
@@ -48,14 +50,14 @@ const StepOne = ({
       toast.error("고양이 이름을 입력해주세요");
       return;
     }
-    if (name.value.length > 30) {
+    if (name.value.trim().length > 30) {
       toast.error("고양이 이름이 너무 깁니다. 30자 미만으로 입력해주세요.");
       return;
     } else {
       try {
         const { data } = await addCatMutation({
           variables: {
-            name: name.value,
+            name: name.value.trim(),
             gender: gender.value,
             kindsId: Number(catKinds.value),
             birth: birthday,
@@ -63,11 +65,14 @@ const StepOne = ({
             pregnant: pregnant.value === "true"
           }
         });
+        setAddedCat({ uuid: data.addCat.uuid, name: data.addCat.name });
         if (data.addCat.uuid) {
-          toast.success("고양이가 등록되었습니다!");
+          toast.success(
+            "고양이가 등록되었습니다! 고양이 체형 정보를 입력해주세요"
+          );
           setTimeout(() => {
             setIndex(2);
-          }, 1000);
+          }, 500);
         }
       } catch (e) {
         console.log(e);
