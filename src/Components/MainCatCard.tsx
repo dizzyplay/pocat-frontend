@@ -5,6 +5,7 @@ import { CAT_INFO } from "../Queries/Cat";
 import Loading from "./Loading";
 import Avatar from "./Avatar";
 import { birthdateToString } from "../utils";
+import { ModModal } from "./ModModal";
 
 type Props = {
   uuid: string;
@@ -34,12 +35,7 @@ export default (props: Props) => {
           </DetailInfo>
           <CenterColumn>
             <VerticalDivider>
-              <ExtraSmallText
-                style={{ textAlign: "right" }}
-                onClick={() => alert("정보수정창을 모달로할가요 어떻게 할가요")}
-              >
-                정보수정
-              </ExtraSmallText>
+              <ModModal />
               <SmallText>
                 <br />
                 중성화: {catInfo.neutering ? "네" : "아니오"}

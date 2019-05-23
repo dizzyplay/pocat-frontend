@@ -61,6 +61,8 @@ export default (props: Props) => {
         title={"몸무게"}
         infoText={currentWeight ? currentWeight + "Kg" : undefined}
         infoTextColor={bmiString.color}
+        onClick={() => alert("hi")}
+        isHover={true}
       />
       <SmallCard
         title={"하루 사료량"}

@@ -5,18 +5,21 @@ type Props = {
   title: string;
   infoText: string;
   infoTextColor?: string;
+  onClick?: () => void;
+  isHover?: boolean;
 };
 
 export const SmallCard = (props: Props) => {
-  const { title, infoText, infoTextColor } = props;
+  const { title, infoText, infoTextColor, onClick, isHover } = props;
   return (
-    <Container>
+    <Container onClick={onClick} isHover={isHover}>
       <TitlePosition>
         <Title>{title}</Title>
       </TitlePosition>
       <BottomPosition>
         <ColoredTitle color={infoTextColor}>{infoText}</ColoredTitle>
       </BottomPosition>
+      {isHover ? <Overlay>몸무게 입력하기</Overlay> : null}
     </Container>
   );
 };
@@ -26,11 +29,30 @@ SmallCard.defaultProps = {
   infoText: "No value"
 };
 
+const Overlay = styled.div`
+  background-color: rgba(0, 0, 0, 0.56);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  border-radius: 5px;
+  color: white;
+  transition: opacity 0.2s linear;
+`;
+
 const Container = styled.div`
   ${(props: mytheme) => props.theme.shadowBox};
   width: 200px;
   height: 200px;
   position: relative;
+  cursor: ${(props: mytheme) => (props.isHover ? "pointer" : null)};
+  &:hover {
+    ${Overlay} {
+      opacity: 1;
+    }
+  }
 `;
 
 const TitlePosition = styled.div`

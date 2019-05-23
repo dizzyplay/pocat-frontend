@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Presenter from "./Presenter";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import Loading from "../Loading";
-import { Simulate } from "react-dom/test-utils";
 
 interface IProps {
   uuid: string;

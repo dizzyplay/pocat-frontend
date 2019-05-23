@@ -1,5 +1,6 @@
 /// <reference types="react-scripts" />
 declare interface mytheme {
+  isHover?: boolean;
   theme: {
     maxWidth: string;
     authBox: string;

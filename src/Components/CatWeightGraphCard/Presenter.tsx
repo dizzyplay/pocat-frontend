@@ -21,7 +21,10 @@ export default (props: Props) => {
       <Divider>
         <TitleColumn>
           <Title>
-            {props.catWeights[0] && dateToString(props.catWeights[0].updatedAt)}
+            {props.catWeights[0] &&
+              dateToString(
+                props.catWeights[props.catWeights.length - 1].updatedAt
+              )}
           </Title>
         </TitleColumn>
       </Divider>
@@ -29,7 +32,7 @@ export default (props: Props) => {
         <LineChart
           width={390}
           height={200}
-          data={props.catWeights.reverse()}
+          data={props.catWeights}
           margin={{ top: 30, right: 10, bottom: 0, left: 40 }}
         >
           <Line type={"monotone"} dataKey={"weight"} stroke={"#297fec"} />
