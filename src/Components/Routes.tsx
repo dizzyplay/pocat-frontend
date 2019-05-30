@@ -5,7 +5,7 @@ import Auth from "../Routes/Auth";
 import { useMutation, useQuery } from "react-apollo-hooks";
 import { CHECK_LOGIN, LOCAL_USER_LOGOUT } from "../Apollo/Queries";
 import Loading from "./Loading";
-import {MyTest} from "./MyTest";
+import { MyTest } from "./MyTest";
 
 interface RouterProps {
   isLoggedIn: boolean;
