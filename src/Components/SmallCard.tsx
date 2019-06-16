@@ -50,7 +50,7 @@ const Container = styled.div`
   cursor: ${(props: mytheme) => (props.isHover ? "pointer" : null)};
   &:hover {
     ${Overlay} {
-      opacity: 1;
+      opacity: 0.99;
     }
   }
 `;
