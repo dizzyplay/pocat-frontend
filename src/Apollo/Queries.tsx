@@ -61,3 +61,12 @@ export const ADD_CAT = gql`
     }
   }
 `;
+
+export const ADD_CAT_WEIGHT = gql`
+  mutation addCatWeight($catId: String!, $weight: Float!) {
+    addCatWeight(catId: $catId, weight: $weight) {
+      id
+      weight
+    }
+  }
+`;
