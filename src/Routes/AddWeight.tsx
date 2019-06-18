@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { useFormInput } from "../Hooks/form";
+import { Button } from "../Components/Button";
+import { useMutation } from "react-apollo-hooks";
+import { ADD_CAT_WEIGHT } from "../Apollo/Queries";
 
 export default (props: any) => {
   const { id } = props.match.params;
   const weight = useFormInput("0");
+  const addCatWeightMutation = useMutation(ADD_CAT_WEIGHT);
 
   const handleKeyup = (e: any) => {
     const re = /^\d{1,2}([.]|[.]\d)?$/;
@@ -16,10 +20,22 @@ export default (props: any) => {
     }
   };
 
+  async function handleSubmit() {
+    console.log(weight.value);
+    try {
+      const res = await addCatWeightMutation({
+        variables: { catId: id, weight: Number(weight.value) }
+      });
+      console.log(res);
+      window.location.href = "/";
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <Container>
-      {id}
-      <BigText>고양이 몸무게를 입력해주세요</BigText>
+      <Text>현재 고양이 몸무게를 입력해주세요</Text>
       <Divider>
         <BigInput
           {...weight}
@@ -28,12 +44,25 @@ export default (props: any) => {
         />
         <BigText>Kg</BigText>
       </Divider>
+      <SubmitBtn>
+        <Button title={"입력하기"} primary={true} onClick={handleSubmit} />
+      </SubmitBtn>
     </Container>
   );
 };
 
+const SubmitBtn = styled.div`
+  width: 100px;
+  height: 30px;
+`;
+
 const BigText = styled.div`
   font-size: 50px;
+  font-weight: bold;
+`;
+
+const Text = styled.div`
+  font-size: 20px;
   font-weight: bold;
 `;
 
