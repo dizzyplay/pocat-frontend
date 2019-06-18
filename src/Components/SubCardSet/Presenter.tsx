@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { bmiToString, getCatStatusValue, birthdateToString } from "../../utils";
 import CatWeightGraphCard from "../CatWeightGraphCard";
 import { Modal } from "../Modal";
+import { Link } from "react-router-dom";
 
 type Props = {
   catWeightInfo: {
@@ -58,17 +59,14 @@ export default (props: Props) => {
         infoText={BMI ? String(BMI + "%") : undefined}
         infoTextColor={bmiString.color}
       />
-      <SmallCard
-        title={"몸무게"}
-        infoText={currentWeight ? currentWeight + "Kg" : undefined}
-        infoTextColor={bmiString.color}
-        onClick={() => alert("hi")}
-        isHover={true}
-      >
-        <Modal isOpen={false}>
-          <div>dfd</div>
-        </Modal>
-      </SmallCard>
+      <Link to={"test"}>
+        <SmallCard
+          title={"몸무게"}
+          infoText={currentWeight ? currentWeight + "Kg" : undefined}
+          infoTextColor={bmiString.color}
+          isHover={true}
+        />
+      </Link>
       <SmallCard
         title={"하루 사료량"}
         infoText={feedReq ? feedReq + "g" : undefined}
