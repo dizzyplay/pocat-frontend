@@ -7,11 +7,7 @@ export const Modal = (props: any) => {
     <div onClick={props.handleModal}>
       {props.isOpen ? (
         <ModalPortal>
-          <FixedContent>
-            <WhiteBox onClick={(e: any) => e.stopPropagation()}>
-              {props.children}
-            </WhiteBox>
-          </FixedContent>
+          <FixedContent>{props.children}</FixedContent>
         </ModalPortal>
       ) : null}
     </div>
@@ -22,14 +18,6 @@ const ModalPortal = ({ children }: any) => {
   const el: any = document.getElementById("modal");
   return ReactDOM.createPortal(children, el);
 };
-
-const WhiteBox = styled.div`
-  width: 400px;
-  height: 300px;
-  border-radius: 5px;
-  background: white;
-  padding: 20px;
-`;
 
 const FixedContent = styled.div`
   position: absolute;
