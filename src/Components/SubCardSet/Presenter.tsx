@@ -3,6 +3,7 @@ import { SmallCard } from "../SmallCard";
 import styled from "styled-components";
 import { bmiToString, getCatStatusValue, birthdateToString } from "../../utils";
 import CatWeightGraphCard from "../CatWeightGraphCard";
+import { Modal } from "../Modal";
 
 type Props = {
   catWeightInfo: {
@@ -63,7 +64,11 @@ export default (props: Props) => {
         infoTextColor={bmiString.color}
         onClick={() => alert("hi")}
         isHover={true}
-      />
+      >
+        <Modal isOpen={false}>
+          <div>dfd</div>
+        </Modal>
+      </SmallCard>
       <SmallCard
         title={"하루 사료량"}
         infoText={feedReq ? feedReq + "g" : undefined}

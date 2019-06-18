@@ -11,7 +11,9 @@ export const ModModal = () => {
   return (
     <>
       <Modal handleModal={handleModal} isOpen={open}>
-        <WhiteBox onClick={(e: any) => e.stopPropagation()}>fdf</WhiteBox>
+        <WhiteBox onClick={(e: any) => e.stopPropagation()}>
+          정보수정 모달 창
+        </WhiteBox>
         <SmallText onClick={handleModal}>닫기</SmallText>
       </Modal>
       <div style={{ textAlign: "right" }}>

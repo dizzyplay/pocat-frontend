@@ -7,6 +7,7 @@ type Props = {
   infoTextColor?: string;
   onClick?: () => void;
   isHover?: boolean;
+  children?: any;
 };
 
 export const SmallCard = (props: Props) => {
@@ -18,6 +19,7 @@ export const SmallCard = (props: Props) => {
       </TitlePosition>
       <BottomPosition>
         <ColoredTitle color={infoTextColor}>{infoText}</ColoredTitle>
+        <div>{props.children}</div>
       </BottomPosition>
       {isHover ? <Overlay>몸무게 입력하기</Overlay> : null}
     </Container>
