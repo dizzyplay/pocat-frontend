@@ -34,12 +34,10 @@ export default (props: IProps) => {
     }
     try {
       setLoading(true);
-      setTimeout(async () => {
-        const res = await addCatWeightMutation({
-          variables: { catId: id, weight: Number(weight.value) }
-        });
-        props.handleModal(false);
-      }, 1000);
+      const res = await addCatWeightMutation({
+        variables: { catId: id, weight: Number(weight.value) }
+      });
+      props.handleModal(false);
       // window.location.href = "/";
     } catch (e) {
       console.log(e);
