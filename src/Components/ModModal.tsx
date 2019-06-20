@@ -14,7 +14,6 @@ export const ModModal = () => {
         <WhiteBox onClick={(e: any) => e.stopPropagation()}>
           정보수정 모달 창
         </WhiteBox>
-        <SmallText onClick={handleModal}>닫기</SmallText>
       </Modal>
       <div style={{ textAlign: "right" }}>
         <ExtraSmallText onClick={handleModal}>정보수정</ExtraSmallText>

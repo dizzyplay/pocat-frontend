@@ -1,13 +1,22 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-export const Modal = (props: any) => {
+interface IProps {
+  isOpen: boolean;
+  handleModal?: any;
+  children?: any;
+}
+export const Modal = (props: IProps) => {
   return (
-    <div onClick={props.handleModal}>
+    <div>
       {props.isOpen ? (
         <ModalPortal>
-          <FixedContent>{props.children}</FixedContent>
+          <FixedContent onClick={() => props.handleModal(false)}>
+            <div onClick={(e: any) => e.stopPropagation()}>
+              {props.children}
+            </div>
+          </FixedContent>
         </ModalPortal>
       ) : null}
     </div>
@@ -20,7 +29,7 @@ const ModalPortal = ({ children }: any) => {
 };
 
 const FixedContent = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: 100%;

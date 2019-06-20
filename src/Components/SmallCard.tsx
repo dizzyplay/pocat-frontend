@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -7,10 +7,11 @@ type Props = {
   infoTextColor?: string;
   onClick?: () => void;
   isHover?: boolean;
+  hoverText?: string | ReactElement;
 };
 
 export const SmallCard = (props: Props) => {
-  const { title, infoText, infoTextColor, onClick, isHover } = props;
+  const { title, infoText, infoTextColor, onClick, isHover, hoverText } = props;
   return (
     <Container onClick={onClick} isHover={isHover}>
       <TitlePosition>
@@ -19,7 +20,7 @@ export const SmallCard = (props: Props) => {
       <BottomPosition>
         <ColoredTitle color={infoTextColor}>{infoText}</ColoredTitle>
       </BottomPosition>
-      {isHover ? <Overlay>몸무게 입력하기</Overlay> : null}
+      {isHover ? <Overlay>{hoverText}</Overlay> : null}
     </Container>
   );
 };

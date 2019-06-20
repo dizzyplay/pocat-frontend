@@ -6,7 +6,7 @@ import { useMutation, useQuery } from "react-apollo-hooks";
 import { CHECK_LOGIN, LOCAL_USER_LOGOUT } from "../Apollo/Queries";
 import Loading from "./Loading";
 import { MyTest } from "./MyTest";
-import AddWeight from "../Routes/AddWeight";
+import AddWeight from "./AddWeight";
 
 interface RouterProps {
   isLoggedIn: boolean;
@@ -27,7 +27,6 @@ const LoginRoutes = () => {
         <Switch>
           <Route exact path={"/"} component={Home} />
           <Route exact path={"/test"} component={MyTest} />
-          <Route exact path={"/weight/:id"} component={AddWeight} />
         </Switch>
       </>
     );

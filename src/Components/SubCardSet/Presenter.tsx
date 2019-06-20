@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { SmallCard } from "../SmallCard";
 import styled from "styled-components";
 import { bmiToString, getCatStatusValue, birthdateToString } from "../../utils";
 import CatWeightGraphCard from "../CatWeightGraphCard";
 import { Modal } from "../Modal";
 import { Link } from "react-router-dom";
+import AddWeight from "../AddWeight";
+import { useInput } from "../AddCatSlider/StepOne";
 
 type Props = {
   catWeightInfo: {
@@ -23,6 +25,17 @@ type Props = {
 
 export default (props: Props) => {
   const { catWeightInfo } = props;
+  const [addWeight, setAddWeight] = useState(false);
+  const bmiText = (
+    <HoverTextDiv>
+      비만도와 체지방은 허리둘레와 뒷다리 길이로 결정됩니다
+    </HoverTextDiv>
+  );
+  const feedEl = (
+    <HoverTextDiv>
+      표시되는 양은 하루 공급량입니다. 해당되는양만큼 나누어 공급하세요
+    </HoverTextDiv>
+  );
   let currentWeight,
     BMI,
     bmiString: { value: string; color: string } = { value: "", color: "" },
@@ -53,25 +66,36 @@ export default (props: Props) => {
         title={"비만도"}
         infoText={bmiString ? bmiString.value : undefined}
         infoTextColor={bmiString.color}
+        isHover={true}
+        hoverText={bmiText}
       />
       <SmallCard
         title={"체지방율"}
         infoText={BMI ? String(BMI + "%") : undefined}
         infoTextColor={bmiString.color}
+        isHover={true}
+        hoverText={bmiText}
       />
-      <CustomLink to={"weight/" + catWeightInfo.uuid}>
-        <SmallCard
-          title={"몸무게"}
-          infoText={currentWeight ? currentWeight + "Kg" : undefined}
-          infoTextColor={bmiString.color}
-          isHover={true}
-        />
-      </CustomLink>
+      <SmallCard
+        title={"현재 몸무게"}
+        infoText={currentWeight ? currentWeight + "Kg" : undefined}
+        infoTextColor={bmiString.color}
+        isHover={true}
+        hoverText={"클릭해서 몸무게 추가하기"}
+        onClick={() => {
+          setAddWeight(true);
+        }}
+      />
       <SmallCard
         title={"하루 사료량"}
         infoText={feedReq ? feedReq + "g" : undefined}
+        isHover={true}
+        hoverText={feedEl}
       />
       <CatWeightGraphCard uuid={catWeightInfo.uuid} />
+      <Modal isOpen={addWeight} handleModal={setAddWeight}>
+        <AddWeight uuid={catWeightInfo.uuid} handleModal={setAddWeight} />
+      </Modal>
     </Wrapper>
   );
 };
@@ -82,6 +106,7 @@ const Wrapper = styled.div`
   grid-gap: 20px;
 `;
 
-const CustomLink = styled(Link)`
-  text-decoration: none;
+const HoverTextDiv = styled.div`
+  width: 80%;
+  line-height: 20px;
 `;
